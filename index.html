@@ -170,7 +170,7 @@ function about() {
 
     // setup default min/max timer range for random draw
     attack_min = 100 ;
-    attack_max = 2000 ;
+    attack_max = 500 ;
 
     // add/change the attack types here
     attack_type = [ "NAXSI Dectect File Important Loader", "SSH Brute Force", "Firewall Detect  Scaner",
@@ -479,7 +479,7 @@ function about() {
                                   " <span style='color:steelblue'>(" + which_attack + ")</span> " +
                                   "<span style='color:yellow'>(GET /.../nap-nhan-giftcode)</span>"+
                                   "<br/>");
-           $('#attackdiv').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
+           $('#attackdiv').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 250);
 
            // pick a new random time and start the timer again!
            this.interval = getRandomInt(attack_min, attack_max);
