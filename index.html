@@ -169,8 +169,8 @@ function about() {
   <script>
 
     // setup default min/max timer range for random draw
-    attack_min = 100 ;
-    attack_max = 500 ;
+    attack_min = 500 ;
+    attack_max = 2000 ;
 
     // add/change the attack types here
     attack_type = [ "NAXSI Dectect File Important Loader", "SSH Brute Force", "Firewall Detect  Scaner",
@@ -348,15 +348,17 @@ function about() {
 
     // we read in a modified file of all country centers
     var centers = [] ;
+    var i =0;
+    var slatlong = []
     d3.tsv("country_centroids_primary.csv", function(data) { centers = data; });
-    d3.csv("samplatlong.csv", function(data) { slatlong = data; });
+    // d3.csv("samplatlong.csv", function(data) { slatlong = data; });
     d3.csv("", function(data) { cnlatlong = data; });
 
     // setup structures for the "hits" (arcs)
     // and circle booms
 
-    var hits = FixedQueue( 7, [  ] );
-    var boom = FixedQueue( 7, [  ] );
+    var hits = FixedQueue( 3, [  ] );
+    var boom = FixedQueue( 3, [  ] );
 
     // we need random numbers and also a way to build random ip addresses
     function getRandomInt(min, max) {return Math.floor(Math.random() * (max - min + 1)) + min;}
@@ -382,18 +384,18 @@ function about() {
        getData: function() {
 
            var self = this;
-
+            
            if (typeof norse_mode !== 'undefined') { return; }
 
            if (typeof random_mode !== 'undefined') { Math.floor((Math.random() * slatlong.length)); }
 
-           dst = Math.floor((Math.random() * slatlong.length));
-           src = Math.floor((Math.random() * slatlong.length));
+           dst = i; // 0 => 4 => 1
+           src = i; // 0 => 4 => 3
 
-           if ((dst == src)) {
-            dst = src + 1 ;
-            if (dst > slatlong.length-1) { dst = src - 1 }
-           }
+          //  if ((dst == src)) {
+          //   dst = src + 1 ;
+          //   if (dst > slatlong.length-1) { dst = src - 1 }
+          //  }
 
            if (typeof allfx !== 'undefined') {
              snd_id = audio_type[Math.floor((Math.random() * audio_type.length))];
@@ -407,13 +409,17 @@ function about() {
            // add hit to the arc queue
            // use strokeColor to set arc line color
 
-           var srclat = slatlong[src].lat;
-           var srclong = slatlong[src].long;
-           var dstlat = slatlong[dst].lat;
-           var dstlong = slatlong[dst].long;
-           which_attack = attack_type[Math.floor((Math.random() * attack_type.length))];
-           var srccountry = slatlong[src]["country"];
-          
+           var srclat = slatlong[src].sLat;
+           var srclong = slatlong[src].sLong;
+           var srcIp = slatlong[src].sIp;
+           var srcCountry = slatlong[src].sCountry;
+           var dstlat = slatlong[dst].dLat;
+           var dstlong = slatlong[dst].dLong;
+           var dstIp = slatlong[dst].dIp;
+           var dstcountry = slatlong[dst].dCountry;
+          //  which_attack = attack_type[Math.floor((Math.random() * attack_type.length))];
+           which_attack = slatlong[dst].typeAttack;
+          //  var srcCountry = slatlong[src]["country"];
            
            // Specify a destination country
            if (typeof destination !== 'undefined' && getDestination() < 80) {
@@ -472,18 +478,22 @@ function about() {
             });
 
            // update the scrolling attack div
-           $('#attackdiv').append("<span style='color:green'>07:33:17 2021-04-14</span> <span><span class=\"app__flag\" style=\"background-image: url(./assets/flags/cn.png);\"></span>"
-           +srccountry + "</span> (" + randomIP() + ") " +
+           $('#attackdiv').append("<span style='color:green'>"+ slatlong[dst].time +"</span> <span><span class=\"app__flag\" style=\"background-image: url(./assets/flags/cn.png);\"></span>"
+           +srcCountry + "</span> (" + slatlong[dst].sIp + ") " +
                                   " <span style='color:red'>attacks</span> <span><span class=\"app__flag\" style=\"background-image: url(./assets/flags/id.png);\"></span>" +
-                                  attackdiv_slatlong+  "</span> (" + randomIP() + ") " +
+                                  slatlong[dst].dCountry +  "</span> (" + slatlong[dst].dIp + ") " +
                                   " <span style='color:steelblue'>(" + which_attack + ")</span> " +
-                                  "<span style='color:yellow'>(GET /.../nap-nhan-giftcode)</span>"+
+                                  "<span style='color:yellow'>(" + slatlong[dst].alert + ")</span>"+
                                   "<br/>");
            $('#attackdiv').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 250);
 
            // pick a new random time and start the timer again!
            this.interval = getRandomInt(attack_min, attack_max);
-           this.init() ;
+           i = i+1
+           if (i === slatlong.length) {
+             i = 0;
+            }
+            this.init() ;
        },
 
     };
@@ -502,8 +512,71 @@ function about() {
     $('#attacktype').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
     // start the ball rolling!
+    // fetch('https://...')
+    // .then((res) => res.json())
+    // .then((res) => {
+    //   console.log(res) // {data: {response: {realData: [...]}}}
+    //   slatlong = res.data.response.realData
+    //   attacks.init();
+    // })
+    
+    setTimeout(() => {
+      slatlong = [
+      {
+      time: '10:10:10:10',
+      dIp:  '127.0.0.1',
+      dLat: 25.271,
+      dLong:  55.329,
+      dCountry: 'are',
+      sIp:  '127.0.0.2',
+      sLat: -34.959,
+      sLong: -57.753, 
+      sCountry: 'arg', 
+      typeAttack: 'NAXSI Dectect File Important Loader', 
+      alert: 'GET /..'
+      },
+      {
+      time: '10:10:10:10',
+      dIp:  '127.0.0.1',
+      dLat: -35.282,
+      dLong:  149.129,
+      dCountry: 'aus',
+      sIp:  '127.0.0.2',
+      sLat: 48.203,
+      sLong: 16.369, 
+      sCountry: 'aut', 
+      typeAttack: 'ABD ', 
+      alert: 'GET /..'
+      },
+      {
+      time: '10:10:10:10',
+      dIp:  '127.0.0.1',
+      dLat: 50.927,
+      dLong:  4.425,
+      dCountry: 'bel',
+      sIp:  '127.0.0.2',
+      sLat: 23.707,
+      sLong: 90.408, 
+      sCountry: 'bgd', 
+      typeAttack: 'DEF', 
+      alert: 'GET /..'
+      },
+      {
+      time: '10:10:10:10',
+      dIp:  '127.0.0.1',
+      dLat: 42.698,
+      dLong:  23.322,
+      dCountry: 'bgr',
+      sIp:  '127.0.0.2',
+      sLat: 44.194,
+      sLong: 17.908, 
+      sCountry: 'bih', 
+      typeAttack: 'GJOKNJ asdr', 
+      alert: 'GET /..'
+      },
+    ]
     attacks.init();
-
+  },500)
     // lazy-dude's responsive window
     d3.select(window).on('resize', function() { location.reload(); });
 
