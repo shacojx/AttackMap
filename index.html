@@ -350,7 +350,7 @@ function about() {
     var centers = [] ;
     d3.tsv("country_centroids_primary.csv", function(data) { centers = data; });
     d3.csv("samplatlong.csv", function(data) { slatlong = data; });
-    d3.csv("cnlatlong.csv", function(data) { cnlatlong = data; });
+    d3.csv("", function(data) { cnlatlong = data; });
 
     // setup structures for the "hits" (arcs)
     // and circle booms
