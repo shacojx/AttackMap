@@ -7,37 +7,59 @@ body {
   padding: 0;
   background: gray;
 }
-#titlediv {
-  font-family: monospace;
-  text-align: center;
-  font-size:20px;
-  position:fixed;
-  width:100%;
-  height:20px;
-  color:orange;
-  background-color:gray;
-  padding:5px;
-  top:0px;
-  overflow-y: auto;
-}
+
 
 #attackdiv {
   font-family: monospace;
   font-size:13px;
   position:fixed;
-  width:35%;
-  height:350px;
+  width:60%;
+  height:250px;
   color:white;
   background-color:black;
   padding:5px;
   bottom:0px;
   overflow-y: auto;
+  margin-left: 20%;
+  border-style: solid;
+  border-color: coral;
+}
+
+#attacktop {
+  font-family: monospace;
+  font-size:13px;
+  position:fixed;
+  width:15%;
+  height:250px;
+  color:white;
+  background-color:black;
+  padding:5px;
+  bottom:0px;
+  overflow-y: auto;
+  border-style: solid;
+  border-color: coral;
+}
+
+#attacktype {
+  font-family: monospace;
+  font-size:16px;
+  position:fixed;
+  width:15%;
+  height:250px;
+  color:white;
+  background-color:black;
+  padding:5px;
+  bottom:0px;
+  overflow-y: auto;
+  margin-left: 84%;
+  border-style: solid;
+  border-color: coral;
 }
 
 #container1 {
   position: static;
   width: 80vw;
-  height: 90vh;
+  height: 80vh;
   max-width:100%;
   max-height:100%
 }
@@ -56,6 +78,7 @@ body {
   padding:10px;
   color: white;
 }
+
 
 
 #about {display:none;}
@@ -124,8 +147,10 @@ function about() {
   <audio id="timallen" src="timallen.wav" preload="auto"></audio>
 
   <center><div id="container1"></div></center>
-  <div id="titlediv">FTSec Attack Map</div>
+  
   <div id="attackdiv"></div>
+  <div id="attacktop"></div>
+  <div id="attacktype"></div>
   <div id="aboutdiv"><i class="fa fa-question-circle fa-2x" onClick="about();"></i></div>
 
   
@@ -219,7 +244,7 @@ function about() {
       attack_max=200;
     }
 
-    if (typeof org_name !== 'undefined') { $("#titlediv").text(decodeURI(org_name) + " IPew Attack Map").html() }
+    if (typeof org_name !== 'undefined') { $("#titlediv").text(decodeURI(org_name) + " FTSec Attack Map").html() }
 
     // we maintain a fixed queue of "attacks" via this class
     function FixedQueue( size, initialValues ){
@@ -501,6 +526,7 @@ function about() {
                                   " <span style='color:red'>attacks</span> <span><span class=\"app__flag\" style=\"background-image: url(./assets/flags/id.png);\"></span>" +
                                   attackdiv_slatlong+  "</span> (" + randomIP() + ") " +
                                   " <span style='color:steelblue'>(" + which_attack + ")</span> " +
+                                  "<span style='color:yellow'>(GET /.../nap-nhan-giftcode)</span>"+
                                   "<br/>");
            $('#attackdiv').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
@@ -510,6 +536,19 @@ function about() {
        },
 
     };
+    //attack top
+    $('#attacktop').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
+                                  "<br/>");
+    $('#attacktop').append("<span style='color:green'> Hệ thống ABCD</span> bị scan <span style='color:red'> 9000</span> lần" +
+                                  "<br/>");
+    $('#attacktop').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
+
+    //attack type
+    $('#attacktype').append("<span style='color:red'> Web Attack</span>" +
+                                  "<br/>");
+    $('#attacktype').append("<span style='color:green'> Network Attack</span>" +
+                                  "<br/>");
+    $('#attacktype').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
     // start the ball rolling!
     attacks.init();
