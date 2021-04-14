@@ -413,56 +413,7 @@ function about() {
            var dstlong = slatlong[dst].long;
            which_attack = attack_type[Math.floor((Math.random() * attack_type.length))];
            var srccountry = slatlong[src]["country"];
-           // "Hi, Mandiant!!"
-           if (typeof china_mode !== 'undefined') {
-             srclat = cnlatlong[src].lat;
-             srclong = cnlatlong[src].long;
-             if (cnlatlong[src].country=="chn") { which_attack = "ZOMGOSH CHINA!!!!!!"; }
-             srccountry = cnlatlong[src]["country"];
-           }
-           // "Hi, Kim Jong!"
-           else if (typeof dprk_mode !== 'undefined') {
-             srclat = 39.0194;
-             srclong = 125.7381;
-             which_attack = "ZOMG NORTH KOREAZ!!!";
-             srccountry = "kp";
-           }
-           // source is always Chattanooga if chatt_mode is set
-           // "Hi ThreatStream!!" http://www.csoonline.com/article/2689609/network-security/threat-intelligence-firm-mistakes-research-for-nation-state-attack.html
-           else if (typeof chatt_mode !== 'undefined') {
-             srclat = 35.0456297;
-             srclong = -85.30968;
-             which_attack = "OMG NATION STATE CHATTANOOGA!!!";
-             srccountry = "usa";
-           }
-           // blame a former employee
-           else if (typeof employee_mode !== 'undefined') {
-             if (typeof in_lat !== 'undefined' && typeof in_lon !== 'undefined') {
-               srclat = in_lat;
-               srclong = in_lon;
-             }
-             which_attack = "Former employee attack"
-             if (typeof employee_fname !== 'undefined' && typeof employee_lname !== 'undefined') {
-               which_attack += ":" + employee_fname + " " + employee_lname;
-             }
-             srccountry = "usa";
-           }
-
-           // Specify a country
-           else if (typeof origin !== 'undefined') {
-             srccountry = origin.toUpperCase();
-             var center_id = 0;
-             for (i = 0; i < centers.length; i ++) {
-               center_id = i;
-               if (centers[i].FIPS10 === srccountry) {
-                break;
-               }
-             }
-
-             srccountry = origin.toLowerCase();
-             srclat = centers[center_id].LAT;
-             srclong = centers[center_id].LONG;
-           }
+          
            
            // Specify a destination country
            if (typeof destination !== 'undefined' && getDestination() < 80) {
