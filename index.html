@@ -531,9 +531,9 @@ function about() {
             });
 
            // update the scrolling attack div
-           $('#attackdiv').append("<span style='color:green'>"+ slatlong[dst].time +"</span> <span><span class=\"app__flag\" style=\"background-image: url(./assets/flags/cn.png);\"></span>"
+           $('#attackdiv').append("<span style='color:green'>"+ slatlong[dst].time +"</span> <span><span class=\"app__flag\" style=\"background-image: url(./assets/flags/"+srcCountry+".gif);\"></span>"
            +srcCountry + "</span> (" + slatlong[dst].sIp + ") " +
-                                  " <span style='color:red'>attacks</span> <span><span class=\"app__flag\" style=\"background-image: url(./assets/flags/id.png);\"></span>" +
+                                  " <span style='color:red'>attacks</span> <span><span class=\"app__flag\" style=\"background-image: url(./assets/flags/"+slatlong[dst].dCountry+".gif);\"></span>" +
                                   slatlong[dst].dCountry +  "</span> (" + slatlong[dst].dIp + ") " +
                                   " <span style='color:steelblue'>(" + which_attack + ")</span> " +
                                   "<span style='color:yellow'>(" + slatlong[dst].alert + ")</span>"+
@@ -614,11 +614,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 25.271,
       dLong:  55.329,
-      dCountry: 'id',
+      dCountry: 'Laos',
       sIp:  '127.0.0.2',
       sLat: -34.959,
       sLong: -57.753, 
-      sCountry: 'cn', 
+      sCountry: 'China', 
       typeAttack: 'Firewall Detect XSS Scaner', 
       alert: 'POST / HTTP/1.1'
       },
@@ -627,11 +627,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: -35.282,
       dLong:  149.129,
-      dCountry: 'id',
+      dCountry: 'Laos',
       sIp:  '127.0.0.2',
       sLat: 48.203,
       sLong: 16.369, 
-      sCountry: 'cn', 
+      sCountry: 'China', 
       typeAttack: 'Firewall Detect SQL injection', 
       alert: 'POST / HTTP/1.1'
       },
@@ -640,11 +640,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 50.927,
       dLong:  4.425,
-      dCountry: 'id',
+      dCountry: 'Laos',
       sIp:  '127.0.0.2',
       sLat: 23.707,
       sLong: 90.408, 
-      sCountry: 'cn', 
+      sCountry: 'China', 
       typeAttack: 'NAXSI Dectect File Important Loader', 
       alert: 'POST / HTTP/1.1'
       },
@@ -653,11 +653,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 42.698,
       dLong:  23.322,
-      dCountry: 'id',
+      dCountry: 'Laos',
       sIp:  '127.0.0.2',
       sLat: 44.194,
       sLong: 17.908, 
-      sCountry: 'cn', 
+      sCountry: 'China', 
       typeAttack: 'Firewall Detect RFI Scaner', 
       alert: 'GET /.env HTTP/1.1'
       },
@@ -666,11 +666,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 25.271,
       dLong:  55.329,
-      dCountry: 'id',
+      dCountry: 'Laos',
       sIp:  '127.0.0.2',
       sLat: -34.959,
       sLong: -57.753, 
-      sCountry: 'cn', 
+      sCountry: 'China', 
       typeAttack: 'Firewall Detect EVANDE Scaner', 
       alert: 'GET /.env HTTP/1.1'
       },
@@ -679,11 +679,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: -35.282,
       dLong:  149.129,
-      dCountry: 'id',
+      dCountry: 'Laos',
       sIp:  '127.0.0.2',
       sLat: 48.203,
       sLong: 16.369, 
-      sCountry: 'cn', 
+      sCountry: 'China', 
       typeAttack: 'Firewall Detect TRAVERSAL attack', 
       alert: 'GET /dl?platform=android&deviceid=ff8c2973589c8cbf&devicemodel=OPPO%20CPH2109&osver=Android%2030%20%2811%29&appversion=6.3.0&sdkver=2.0.0&distsrc=&mno=Viettel&conntype=WIFI&issecure=true HTTP/2.0'.substring(0, 50)
       },
@@ -692,11 +692,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 50.927,
       dLong:  4.425,
-      dCountry: 'id',
+      dCountry: 'Laos',
       sIp:  '127.0.0.2',
       sLat: 23.707,
       sLong: 90.408, 
-      sCountry: 'cn', 
+      sCountry: 'China', 
       typeAttack: 'Firewall Detect Bot Scaner', 
       alert: 'GET /dl?platform=android&deviceid=ff8c2973589c8cbf&devicemodel=OPPO%20CPH2109&osver=Android%2030%20%2811%29&appversion=6.3.0&sdkver=2.0.0&distsrc=&mno=Viettel&conntype=WIFI&issecure=true HTTP/2.0'.substring(0, 50)
       },
@@ -705,11 +705,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 25.271,
       dLong:  55.329,
-      dCountry: 'id',
+      dCountry: 'Laos',
       sIp:  '127.0.0.2',
       sLat: -34.959,
       sLong: -57.753, 
-      sCountry: 'cn', 
+      sCountry: 'China', 
       typeAttack: 'DDoS Attack', 
       alert: 'POST / HTTP/1.1'
       },
