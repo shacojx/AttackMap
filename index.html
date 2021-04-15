@@ -13,14 +13,14 @@ body {
   font-family: monospace;
   font-size:13px;
   position:fixed;
-  width:70%;
+  width:67%;
   height:25%;
   color:white;
   background-color:black;
   padding:5px;
   bottom:0px;
   overflow-y: auto;
-  margin-left: 15%;
+  margin-left: 16%;
   border-style: solid;
   border-color: coral;
 }
@@ -61,7 +61,7 @@ body {
   font-size:13px;
   position:fixed;
   width:15%;
-  height:71%;
+  height:40%;
   color:white;
   background-color:black;
   padding:5px;
@@ -69,7 +69,7 @@ body {
   overflow-y: auto;
   border-style: solid;
   border-color: coral;
-  margin-bottom: 13%;
+  margin-bottom: 25%;
 }
 
 #bRank {
@@ -77,7 +77,7 @@ body {
   font-size:13px;
   position:fixed;
   width:15%;
-  height:71%;
+  height:40%;
   color:white;
   background-color:black;
   padding:5px;
@@ -85,7 +85,7 @@ body {
   overflow-y: auto;
   border-style: solid;
   border-color: coral;
-  margin-bottom: 13%;
+  margin-bottom: 25%;
   margin-left: 84%;
 }
 
@@ -94,7 +94,8 @@ body {
   width: 85vw;
   height: 80vh;
   max-width:100%;
-  max-height:100%
+  max-height:100%;
+  
 }
 
 #about {
@@ -477,20 +478,37 @@ function about() {
            }
 
            // Specify attack color
-           if (typeof greenattacks !== 'undefined') {
-             strokeColor = 'green';
+           if(which_attack === 'Firewall Detect XSS Scaner'){
+            strokeColor = 'yellow';
+           }else if(which_attack === 'Firewall Detect SQL injection'){
+            strokeColor = 'red';
+           }else if(which_attack === 'NAXSI Dectect File Important Loader'){
+            strokeColor = 'green';
+           }else if(which_attack === 'Firewall Detect RFI Scaner'){
+            strokeColor = 'orange';
+           }else if(which_attack === 'Firewall Detect EVANDE Scaner'){
+            strokeColor = 'aqua';
+           }else if(which_attack === 'Firewall Detect TRAVERSAL attack'){
+            strokeColor = 'brown';
+           }else if(which_attack === 'Firewall Detect Bot Scaner'){
+            strokeColor = 'olive';
+           }else{
+            strokeColor = 'blue';
            }
-           else if (typeof redattacks !== 'undefined') {
-             strokeColor = 'red';
-           }
-           else {
-             if (getStroke() < 70) {
-               strokeColor = 'green';
-             }
-             else {
-               strokeColor = 'red';
-             }
-           }
+          //  if (typeof greenattacks !== 'undefined') {
+          //    strokeColor = 'green';
+          //  }
+          //  else if (typeof redattacks !== 'undefined') {
+          //    strokeColor = 'red';
+          //  }
+          //  else {
+          //    if (getStroke() < 70) {
+          //      strokeColor = 'green';
+          //    }
+          //    else {
+          //      strokeColor = 'red';
+          //    }
+          //  }
 
            if (typeof drill_mode != 'undefined') {
 
@@ -533,7 +551,7 @@ function about() {
 
     };
     //attack top
-    $('#attacktop').append("<span style='color:yellow;font-size:20px;font-weight: bold;'> THỐNG KÊ 5 NGÀY GẦN ĐÂY</span>" +
+    $('#attacktop').append("<span style='font-size:20px;font-weight: bold;'> THỐNG KÊ 5 NGÀY GẦN ĐÂY</span>" +
                                   "<br/>");
     $('#attacktop').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
                                   "<br/>");
@@ -542,16 +560,28 @@ function about() {
     $('#attacktop').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
     //attack type
-    $('#attacktype').append("<span style='color:yellow;font-size:20px;font-weight: bold;'> CÁC LOẠI TẤN CÔNG</span>" +
+    $('#attacktype').append("<span style='font-size:20px;font-weight: bold;'> CÁC LOẠI TẤN CÔNG</span>" +
                                   "<br/>");
-    $('#attacktype').append("<span style='color:red'> Web Attack</span>" +
+    $('#attacktype').append("<span style='color:yellow'> Firewall Detect XSS Scaner</span>" +
                                   "<br/>");
-    $('#attacktype').append("<span style='color:green'> Network Attack</span>" +
+    $('#attacktype').append("<span style='color:red'> Firewall Detect SQL injection</span>" +
+                                  "<br/>");
+    $('#attacktype').append("<span style='color:green'> NAXSI Dectect File Important Loader</span>" +
+                                  "<br/>");
+    $('#attacktype').append("<span style='color:orange'> Firewall Detect RFI Scaner</span>" +
+                                  "<br/>");
+    $('#attacktype').append("<span style='color:aqua'> Firewall Detect EVANDE Scaner</span>" +
+                                  "<br/>");
+    $('#attacktype').append("<span style='color:brown'> Firewall Detect TRAVERSAL attack</span>" +
+                                  "<br/>");
+    $('#attacktype').append("<span style='color:olive'> Firewall Detect Bot Scaner</span>" +
+                                  "<br/>");
+    $('#attacktype').append("<span style='color:blue'> Other</span>" +
                                   "<br/>");
     $('#attacktype').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
     //attack rank
-    $('#aRank').append("<span style='color:yellow;font-size:20px;font-weight: bold;'> THỐNG KÊ TOÀN THỜI GIAN</span>" +
+    $('#aRank').append("<span style='font-size:20px;font-weight: bold;'> THỐNG KÊ TOÀN THỜI GIAN</span>" +
                                   "<br/>");
     $('#aRank').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
                                   "<br/>");
@@ -560,7 +590,7 @@ function about() {
     $('#aRank').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
     //Vulns rank
-    $('#bRank').append("<span style='color:yellow;font-size:20px;font-weight: bold;'> THỐNG KÊ LỖ HỔNG TẤN CÔNG</span>" +
+    $('#bRank').append("<span style='font-size:20px;font-weight: bold;'> THỐNG KÊ LỖ HỔNG TẤN CÔNG</span>" +
                                   "<br/>");
     $('#bRank').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
                                   "<br/>");
@@ -584,53 +614,107 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 25.271,
       dLong:  55.329,
-      dCountry: 'cn1',
+      dCountry: 'id',
       sIp:  '127.0.0.2',
       sLat: -34.959,
       sLong: -57.753, 
-      sCountry: 'vn1', 
-      typeAttack: 'NAXSI Dectect File Important Loader', 
-      alert: 'GET /..'
+      sCountry: 'cn', 
+      typeAttack: 'Firewall Detect XSS Scaner', 
+      alert: 'POST / HTTP/1.1'
       },
       {
       time: '10:10:10:10',
       dIp:  '127.0.0.1',
       dLat: -35.282,
       dLong:  149.129,
-      dCountry: 'cn2',
+      dCountry: 'id',
       sIp:  '127.0.0.2',
       sLat: 48.203,
       sLong: 16.369, 
-      sCountry: 'vn2', 
-      typeAttack: 'ABD ', 
-      alert: 'GET /..'
+      sCountry: 'cn', 
+      typeAttack: 'Firewall Detect SQL injection', 
+      alert: 'POST / HTTP/1.1'
       },
       {
       time: '10:10:10:10',
       dIp:  '127.0.0.1',
       dLat: 50.927,
       dLong:  4.425,
-      dCountry: 'cn3',
+      dCountry: 'id',
       sIp:  '127.0.0.2',
       sLat: 23.707,
       sLong: 90.408, 
-      sCountry: 'vn3', 
-      typeAttack: 'DEF', 
-      alert: 'GET /..'
+      sCountry: 'cn', 
+      typeAttack: 'NAXSI Dectect File Important Loader', 
+      alert: 'POST / HTTP/1.1'
       },
       {
       time: '10:10:10:10',
       dIp:  '127.0.0.1',
       dLat: 42.698,
       dLong:  23.322,
-      dCountry: 'cn4',
+      dCountry: 'id',
       sIp:  '127.0.0.2',
       sLat: 44.194,
       sLong: 17.908, 
-      sCountry: 'vn4', 
-      typeAttack: 'GJOKNJ asdr', 
-      alert: 'GET /..'
+      sCountry: 'cn', 
+      typeAttack: 'Firewall Detect RFI Scaner', 
+      alert: 'GET /.env HTTP/1.1'
       },
+      {
+      time: '10:10:10:10',
+      dIp:  '127.0.0.1',
+      dLat: 25.271,
+      dLong:  55.329,
+      dCountry: 'id',
+      sIp:  '127.0.0.2',
+      sLat: -34.959,
+      sLong: -57.753, 
+      sCountry: 'cn', 
+      typeAttack: 'Firewall Detect EVANDE Scaner', 
+      alert: 'GET /.env HTTP/1.1'
+      },
+      {
+      time: '10:10:10:10',
+      dIp:  '127.0.0.1',
+      dLat: -35.282,
+      dLong:  149.129,
+      dCountry: 'id',
+      sIp:  '127.0.0.2',
+      sLat: 48.203,
+      sLong: 16.369, 
+      sCountry: 'cn', 
+      typeAttack: 'Firewall Detect TRAVERSAL attack', 
+      alert: 'GET /dl?platform=android&deviceid=ff8c2973589c8cbf&devicemodel=OPPO%20CPH2109&osver=Android%2030%20%2811%29&appversion=6.3.0&sdkver=2.0.0&distsrc=&mno=Viettel&conntype=WIFI&issecure=true HTTP/2.0'.substring(0, 50)
+      },
+      {
+      time: '10:10:10:10',
+      dIp:  '127.0.0.1',
+      dLat: 50.927,
+      dLong:  4.425,
+      dCountry: 'id',
+      sIp:  '127.0.0.2',
+      sLat: 23.707,
+      sLong: 90.408, 
+      sCountry: 'cn', 
+      typeAttack: 'Firewall Detect Bot Scaner', 
+      alert: 'GET /dl?platform=android&deviceid=ff8c2973589c8cbf&devicemodel=OPPO%20CPH2109&osver=Android%2030%20%2811%29&appversion=6.3.0&sdkver=2.0.0&distsrc=&mno=Viettel&conntype=WIFI&issecure=true HTTP/2.0'.substring(0, 50)
+      },
+      {
+      time: '10:10:10:10',
+      dIp:  '127.0.0.1',
+      dLat: 25.271,
+      dLong:  55.329,
+      dCountry: 'id',
+      sIp:  '127.0.0.2',
+      sLat: -34.959,
+      sLong: -57.753, 
+      sCountry: 'cn', 
+      typeAttack: 'DDoS Attack', 
+      alert: 'POST / HTTP/1.1'
+      },
+    
+      
     ]
     attacks.init();
   },500)
