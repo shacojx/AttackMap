@@ -13,14 +13,14 @@ body {
   font-family: monospace;
   font-size:13px;
   position:fixed;
-  width:60%;
-  height:250px;
+  width:70%;
+  height:25%;
   color:white;
   background-color:black;
   padding:5px;
   bottom:0px;
   overflow-y: auto;
-  margin-left: 20%;
+  margin-left: 15%;
   border-style: solid;
   border-color: coral;
 }
@@ -30,7 +30,7 @@ body {
   font-size:13px;
   position:fixed;
   width:15%;
-  height:250px;
+  height:25%;
   color:white;
   background-color:black;
   padding:5px;
@@ -45,7 +45,7 @@ body {
   font-size:16px;
   position:fixed;
   width:15%;
-  height:250px;
+  height:25%;
   color:white;
   background-color:black;
   padding:5px;
@@ -56,9 +56,42 @@ body {
   border-color: coral;
 }
 
+#aRank {
+  font-family: monospace;
+  font-size:13px;
+  position:fixed;
+  width:15%;
+  height:71%;
+  color:white;
+  background-color:black;
+  padding:5px;
+  bottom:0px;
+  overflow-y: auto;
+  border-style: solid;
+  border-color: coral;
+  margin-bottom: 13%;
+}
+
+#bRank {
+  font-family: monospace;
+  font-size:13px;
+  position:fixed;
+  width:15%;
+  height:71%;
+  color:white;
+  background-color:black;
+  padding:5px;
+  bottom:0px;
+  overflow-y: auto;
+  border-style: solid;
+  border-color: coral;
+  margin-bottom: 13%;
+  margin-left: 84%;
+}
+
 #container1 {
-  position: static;
-  width: 80vw;
+  position: relative;
+  width: 85vw;
   height: 80vh;
   max-width:100%;
   max-height:100%
@@ -135,7 +168,7 @@ function about() {
 </head>
 
 <body>
-  <script src="background.js"></script>
+  
   <audio id="starwars" src="Blaster-Solo.wav" preload="auto"></audio>
   <audio id="tng" src="tng_torpedo_clean.mp3" preload="auto"></audio>
   <audio id="b5" src="B5-interceptor1.wav" preload="auto"></audio>
@@ -151,7 +184,9 @@ function about() {
   <div id="attackdiv"></div>
   <div id="attacktop"></div>
   <div id="attacktype"></div>
-  <div id="aboutdiv"><i class="fa fa-question-circle fa-2x" onClick="about();"></i></div>
+  <div id="aRank"></div>
+  <div id="bRank"></div>
+  <!-- <div id="aboutdiv"><i class="fa fa-question-circle fa-2x" onClick="about();"></i></div> -->
 
   
 
@@ -401,10 +436,10 @@ function about() {
              snd_id = audio_type[Math.floor((Math.random() * audio_type.length))];
            }
            // no guarantee of sound playing w/o the load - stupid browsers
-           if (typeof nofx === 'undefined') {
-             document.getElementById(snd_id).load();
-             document.getElementById(snd_id).play();
-           }
+          //  if (typeof nofx === 'undefined') {
+          //    document.getElementById(snd_id).load();
+          //    document.getElementById(snd_id).play();
+          //  }
 
            // add hit to the arc queue
            // use strokeColor to set arc line color
@@ -498,6 +533,8 @@ function about() {
 
     };
     //attack top
+    $('#attacktop').append("<span style='color:yellow;font-size:20px;font-weight: bold;'> THỐNG KÊ 5 NGÀY GẦN ĐÂY</span>" +
+                                  "<br/>");
     $('#attacktop').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
                                   "<br/>");
     $('#attacktop').append("<span style='color:green'> Hệ thống ABCD</span> bị scan <span style='color:red'> 9000</span> lần" +
@@ -505,11 +542,31 @@ function about() {
     $('#attacktop').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
     //attack type
+    $('#attacktype').append("<span style='color:yellow;font-size:20px;font-weight: bold;'> CÁC LOẠI TẤN CÔNG</span>" +
+                                  "<br/>");
     $('#attacktype').append("<span style='color:red'> Web Attack</span>" +
                                   "<br/>");
     $('#attacktype').append("<span style='color:green'> Network Attack</span>" +
                                   "<br/>");
     $('#attacktype').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
+
+    //attack rank
+    $('#aRank').append("<span style='color:yellow;font-size:20px;font-weight: bold;'> THỐNG KÊ TOÀN THỜI GIAN</span>" +
+                                  "<br/>");
+    $('#aRank').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
+                                  "<br/>");
+    $('#aRank').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
+                                  "<br/>");
+    $('#aRank').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
+
+    //Vulns rank
+    $('#bRank').append("<span style='color:yellow;font-size:20px;font-weight: bold;'> THỐNG KÊ LỖ HỔNG TẤN CÔNG</span>" +
+                                  "<br/>");
+    $('#bRank').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
+                                  "<br/>");
+    $('#bRank').append("<span style='color:green'> Hệ thống ABCD</span> bị tấn công <span style='color:red'> 69</span> lần" +
+                                  "<br/>");
+    $('#bRank').animate({scrollTop: $('#attackdiv').prop("scrollHeight")}, 500);
 
     // start the ball rolling!
     // fetch('https://...')
@@ -527,11 +584,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 25.271,
       dLong:  55.329,
-      dCountry: 'are',
+      dCountry: 'cn1',
       sIp:  '127.0.0.2',
       sLat: -34.959,
       sLong: -57.753, 
-      sCountry: 'arg', 
+      sCountry: 'vn1', 
       typeAttack: 'NAXSI Dectect File Important Loader', 
       alert: 'GET /..'
       },
@@ -540,11 +597,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: -35.282,
       dLong:  149.129,
-      dCountry: 'aus',
+      dCountry: 'cn2',
       sIp:  '127.0.0.2',
       sLat: 48.203,
       sLong: 16.369, 
-      sCountry: 'aut', 
+      sCountry: 'vn2', 
       typeAttack: 'ABD ', 
       alert: 'GET /..'
       },
@@ -553,11 +610,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 50.927,
       dLong:  4.425,
-      dCountry: 'bel',
+      dCountry: 'cn3',
       sIp:  '127.0.0.2',
       sLat: 23.707,
       sLong: 90.408, 
-      sCountry: 'bgd', 
+      sCountry: 'vn3', 
       typeAttack: 'DEF', 
       alert: 'GET /..'
       },
@@ -566,11 +623,11 @@ function about() {
       dIp:  '127.0.0.1',
       dLat: 42.698,
       dLong:  23.322,
-      dCountry: 'bgr',
+      dCountry: 'cn4',
       sIp:  '127.0.0.2',
       sLat: 44.194,
       sLong: 17.908, 
-      sCountry: 'bih', 
+      sCountry: 'vn4', 
       typeAttack: 'GJOKNJ asdr', 
       alert: 'GET /..'
       },
